@@ -1,0 +1,24 @@
+name: Run Bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 10 * * * 
+  
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Setup Deno
+        # uses: denoland/setup-deno@v1
+        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31  # v1.1.2
+        with:
+          deno-version: v1.x
+      
+      - name: Run app
+        run: deno run -A index.ts skey=${{ secrets.SCHEDULE_API_KEY }} mkey=${{ secrets.MISSKEY_API_KEY }}
