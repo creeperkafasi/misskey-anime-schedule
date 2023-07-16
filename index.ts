@@ -7,8 +7,8 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 
-const SCHEDULE_API_KEY = Deno.env.get("SCHEDULE_API_KEY");
-const MISSKEY_API_KEY = Deno.env.get("MISSKEY_API_KEY");
+const SCHEDULE_API_KEY = Deno.env.get("SCHEDULE_API_KEY") ?? Deno.args.find((s) => s.startsWith("skey="))?.split("skey=")[1];
+const MISSKEY_API_KEY = Deno.env.get("MISSKEY_API_KEY") ?? Deno.args.find((s) => s.startsWith("mkey="))?.split("mkey=")[1];
 
 interface scheduleItem {
     title: string,
