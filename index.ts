@@ -56,7 +56,7 @@ const lines = schedule.filter((item) => dayjs(item.episodeDate).utc().date() == 
     // `| ${dayjs(item.episodeDate).tz("JST").format("HH:mm (JST)")}`
 );
 
-const post = `<center>**Anime Schedule for ${dayjs().utc().format("ddd DD/MM/YYYY")}**</center>\n${lines.join("\n")}`;
+const post = `<center>**Anime Schedule for ${dayjs().utc().format("ddd DD/MM/YYYY")}**</center>\n${lines.join("\n")}\n#bot`;
 
 const res =
     await fetch(
